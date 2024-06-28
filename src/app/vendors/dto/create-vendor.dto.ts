@@ -9,4 +9,7 @@ export class CreateVendorDto {
 
   @IsString()
   address: string;
+
+  @IsString()
+  pin: string;
 }

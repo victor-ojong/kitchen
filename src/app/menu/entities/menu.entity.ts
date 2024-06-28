@@ -2,7 +2,6 @@ export class Menu {
   vendorId: string;
   name: string;
   description: string;
-  price: number;
-  // itemNumber: number;
+  price: string;
   category: string;
 }

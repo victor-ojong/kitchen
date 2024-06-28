@@ -6,4 +6,6 @@ export class Vendor {
   address: string;
 
   vendorId: string;
+
+  pin: string;
 }
