@@ -1,6 +1,27 @@
-import { Controller } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
+import { VendorsService } from './vendors.service';
+import { AuthGuard } from '../Guards/auth.guard';
+import { CurrentUser } from '../interceptors/auth.interceptors';
 
+@UseGuards(AuthGuard)
+@UseInterceptors(CurrentUser)
 @Controller('vendors')
 export class VendorsController {
-  constructor() {}
+  constructor(private readonly vendorService: VendorsService) {}
+
+  @Get('/:phone')
+  async viewOneVendor(@Param('phone') phone: string) {
+    return await this.vendorService.findOne(phone);
+  }
+
+  @Get('all')
+  async viewAllVendors() {
+    return await this.vendorService.findAll();
+  }
 }
