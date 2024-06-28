@@ -5,6 +5,7 @@ import { CustomerModule } from './app/customers/customer.module';
 import { VendorsModule } from './app/vendors/vendors.module';
 import { MenuModule } from './app/menu/menu.module';
 import { KnexModule } from 'nestjs-knex';
+import { AuthModule } from './app/auth/auth.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { KnexModule } from 'nestjs-knex';
     CustomerModule,
     VendorsModule,
     MenuModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

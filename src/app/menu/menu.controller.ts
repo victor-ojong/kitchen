@@ -9,6 +9,7 @@ export class MenuController {
 
   @Post('/create')
   create(@Body() createMenuDto: CreateMenuDto) {
+    // get vendorId from current request object
     return this.menuService.create(createMenuDto);
   }
 
@@ -24,6 +25,7 @@ export class MenuController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
+    // get vendorId from current request object
     return this.menuService.update(+id, updateMenuDto);
   }
 }

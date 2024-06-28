@@ -14,24 +14,9 @@ export class VendorsService {
       .insert({ ...createVendorDto, vendorId: this.generateVendorId() });
   }
 
-  async login(vendorId: string, pin: string) {
+  async findOne(vendorId: string) {
     const vendor = await this.knex.table('vendors').where('vendorId', vendorId);
-
-    if (vendor.length == 0) {
-      return {
-        status: 'fail',
-        message: 'Incorrect credentials',
-      };
-    }
-
-    if (vendor[0].pin !== parseInt(pin)) {
-      return {
-        status: 'fail',
-        message: 'Incorrect credentials',
-      };
-    }
     return vendor[0];
-    // vendor login flow
   }
 
   generateVendorId() {
