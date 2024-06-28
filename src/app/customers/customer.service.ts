@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCustomerDto } from './dto/create-customer.dto';
-import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Customer } from './entities/customer.entity';
+import { Knex } from 'knex';
+import { InjectConnection } from 'nestjs-knex';
+import { randomBytes } from 'crypto';
 
 @Injectable()
 export class CustomerService {
-  create(createCustomerDto: CreateCustomerDto) {
-    return 'This action adds a new customer';
+  constructor(@InjectConnection() private readonly knex: Knex) {}
+  async create(createCustomersDto: CreateCustomerDto) {
+    return await this.knex
+      .table<Customer>('customers')
+      .insert({ ...createCustomersDto, customerId: this.generateCustomerId() });
   }
 
-  findAll() {
-    return `This action returns all customer`;
+  async findOne(phone: string) {
+    const customer = await this.knex.table('customers').where('phone', phone);
+    return customer[0];
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} customer`;
-  }
-
-  update(id: number, updateCustomerDto: UpdateCustomerDto) {
-    return `This action updates a #${id} customer`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} customer`;
+  generateCustomerId() {
+    const randomBytesBuffer = randomBytes(8);
+    return 'kitch-' + randomBytesBuffer.toString('hex');
   }
 }

@@ -15,17 +15,17 @@ export class MenuService {
       .insert({ ...CreateMenuDto, vendorId });
   }
 
-  async update(item_number: string, vendorId: string) {
+  async update(updateMenuDto: UpdateMenuDto, vendorId: string) {
     const item = await this.knex
       .table('products')
-      .where(vendorId, item_number)
-      .update(UpdateMenuDto);
+      .where({ vendorId, item_number: updateMenuDto.item_number })
+      .update(updateMenuDto);
 
     /// check to see that it works well
     console.log(item);
     return {
       status: 'success',
-      message: `menu item ${item_number}successfully deleted`,
+      message: `menu item ${updateMenuDto.item_number}successfully deleted`,
     };
   }
 

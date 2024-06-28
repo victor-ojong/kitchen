@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
@@ -10,7 +10,9 @@ export class MenuController {
   @Post('/create')
   create(@Body() createMenuDto: CreateMenuDto) {
     // get vendorId from current request object
-    return this.menuService.create(createMenuDto);
+
+    const vendorId = '';
+    return this.menuService.create(createMenuDto, vendorId);
   }
 
   @Get('/all')
@@ -18,14 +20,16 @@ export class MenuController {
     return this.menuService.fetchAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.menuService.findOne(+id);
+  @Post('/update')
+  async update(@Body() updateMenuDto: UpdateMenuDto) {
+    // get vendorId from current request object
+
+    const vendorId = '';
+    return await this.menuService.update(updateMenuDto, vendorId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMenuDto: UpdateMenuDto) {
-    // get vendorId from current request object
-    return this.menuService.update(+id, updateMenuDto);
+  @Get('/:vendorId')
+  async findByVendor(@Param('vendorId') vendorId: string) {
+    return await this.menuService.findByVendor(vendorId);
   }
 }

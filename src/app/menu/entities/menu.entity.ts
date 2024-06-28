@@ -3,6 +3,5 @@ export class Menu {
   name: string;
   description: string;
   price: string;
-  // itemNumber: number;
   category: string;
 }

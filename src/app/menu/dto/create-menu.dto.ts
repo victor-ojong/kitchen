@@ -9,7 +9,6 @@ export class CreateMenuDto {
 
   @IsString()
   price: string;
-  // itemNumber: number;
 
   @IsString()
   category: string;
