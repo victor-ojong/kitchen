@@ -2,25 +2,51 @@ import { Injectable } from '@nestjs/common';
 import { CreateMenuDto } from './dto/create-menu.dto';
 import { UpdateMenuDto } from './dto/update-menu.dto';
 
+import { Knex } from 'knex';
+import { InjectConnection } from 'nestjs-knex';
+import { Menu } from './entities/menu.entity';
+
 @Injectable()
 export class MenuService {
-  create(createMenuDto: CreateMenuDto) {
-    return 'This action adds a new menu';
+  constructor(@InjectConnection() private readonly knex: Knex) {}
+  async create(CreateMenuDto: CreateMenuDto, vendorId: string) {
+    return await this.knex
+      .table<Menu>('menu_items')
+      .insert({ ...CreateMenuDto, vendorId });
   }
 
-  findAll() {
-    return `This action returns all menu`;
+  async update(item_number: string, vendorId: string) {
+    const item = await this.knex
+      .table('products')
+      .where(vendorId, item_number)
+      .update(UpdateMenuDto);
+
+    /// check to see that it works well
+    console.log(item);
+    return {
+      status: 'success',
+      message: `menu item ${item_number}successfully deleted`,
+    };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} menu`;
+  async delete(item_number: string, vendorId: string) {
+    return await this.knex
+      .table('menu_items')
+      .where({ item_number, vendorId })
+      .delete();
   }
 
-  update(id: number, updateMenuDto: UpdateMenuDto) {
-    return `This action updates a #${id} menu`;
+  async findOne(item_number: string) {
+    return await this.knex
+      .table('menu_items')
+      .where('item_number', item_number);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} menu`;
+  async findByVendor(vendorId: string) {
+    return await this.knex.table('menu_items').where('vendorId', vendorId);
+  }
+
+  async fetchAll() {
+    return await this.knex.table('menu_items');
   }
 }

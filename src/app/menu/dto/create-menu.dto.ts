@@ -2,9 +2,6 @@ import { IsString } from 'class-validator';
 
 export class CreateMenuDto {
   @IsString()
-  vendorId: string;
-
-  @IsString()
   name: string;
 
   @IsString()
