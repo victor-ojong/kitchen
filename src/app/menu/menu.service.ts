@@ -9,16 +9,25 @@ import { Menu } from './entities/menu.entity';
 @Injectable()
 export class MenuService {
   constructor(@InjectConnection() private readonly knex: Knex) {}
-  async create(CreateMenuDto: CreateMenuDto, vendorId: string) {
+  async create(CreateMenuDto: CreateMenuDto, currentUser: any) {
+    if (currentUser.role !== 'vendor') {
+      return { status: 'fail', message: 'access denied!' };
+    }
     return await this.knex
       .table<Menu>('menu_items')
-      .insert({ ...CreateMenuDto, vendorId });
+      .insert({ ...CreateMenuDto, vendorId: currentUser.id });
   }
 
-  async update(updateMenuDto: UpdateMenuDto, vendorId: string) {
+  async update(updateMenuDto: UpdateMenuDto, currentUser: any) {
+    if (currentUser.role !== 'vendor') {
+      return { status: 'fail', message: 'access denied!' };
+    }
     const item = await this.knex
       .table('products')
-      .where({ vendorId, item_number: updateMenuDto.item_number })
+      .where({
+        vendorId: currentUser.id,
+        item_number: updateMenuDto.item_number,
+      })
       .update(updateMenuDto);
 
     /// check to see that it works well
@@ -29,17 +38,18 @@ export class MenuService {
     };
   }
 
-  async delete(item_number: string, vendorId: string) {
+  async delete(id: string, currentUser: any) {
+    if (currentUser.role !== 'vendor') {
+      return { status: 'fail', message: 'access denied!' };
+    }
     return await this.knex
       .table('menu_items')
-      .where({ item_number, vendorId })
+      .where({ id, vendorId: currentUser.id })
       .delete();
   }
 
   async findOne(item_number: string) {
-    return await this.knex
-      .table('menu_items')
-      .where('item_number', item_number);
+    return await this.knex.table('menu_items').where('id', item_number);
   }
 
   async findByVendor(vendorId: string) {
