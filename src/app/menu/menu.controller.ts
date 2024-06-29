@@ -30,7 +30,7 @@ export class MenuController {
     return await this.menuService.update(updateMenuDto, req.user);
   }
 
-  @Get('/:vendorId')
+  @Get('list/:vendorId')
   async findByVendor(@Param('vendorId') vendorId: string) {
     return await this.menuService.findByVendor(vendorId);
   }
@@ -43,10 +43,5 @@ export class MenuController {
   @Get('detail/:menu_Id')
   async itemDetail(@Param('menu_Id') menu_Id: string) {
     return await this.menuService.findOne(menu_Id);
-  }
-
-  @Get('/all')
-  fetchAll() {
-    return this.menuService.fetchAll();
   }
 }

@@ -15,7 +15,7 @@ export class MenuService {
     }
     return await this.knex
       .table<Menu>('menu_items')
-      .insert({ ...CreateMenuDto, vendorId: currentUser.id });
+      .insert({ ...CreateMenuDto, vendorId: currentUser.vendorId });
   }
 
   async update(updateMenuDto: UpdateMenuDto, currentUser: any) {
@@ -23,18 +23,22 @@ export class MenuService {
       return { status: 'fail', message: 'access denied!' };
     }
     const item = await this.knex
-      .table('products')
+      .table('menu_items')
       .where({
-        vendorId: currentUser.id,
-        item_number: updateMenuDto.item_number,
+        vendorId: parseInt(currentUser.vendorId),
+        id: parseInt(updateMenuDto.id),
       })
       .update(updateMenuDto);
 
-    /// check to see that it works well
-    console.log(item);
+    if (item == 0) {
+      return {
+        status: 'fail',
+        message: `Access denied!`,
+      };
+    }
     return {
       status: 'success',
-      message: `menu item ${updateMenuDto.item_number}successfully deleted`,
+      message: `menu item ${updateMenuDto.id} successfully updated!`,
     };
   }
 
@@ -42,10 +46,19 @@ export class MenuService {
     if (currentUser.role !== 'vendor') {
       return { status: 'fail', message: 'access denied!' };
     }
-    return await this.knex
+    const isDeleted = await this.knex
       .table('menu_items')
-      .where({ id, vendorId: currentUser.id })
+      .where({ id: parseInt(id), vendorId: parseInt(currentUser.vendorId) })
       .delete();
+
+    if (!isDeleted) {
+      return { status: 'fail', message: 'access denied!' };
+    }
+
+    return {
+      status: 'success',
+      message: `item number ${id} successfully deleted`,
+    };
   }
 
   async findOne(item_number: string) {
@@ -57,6 +70,10 @@ export class MenuService {
   }
 
   async fetchAll() {
-    return await this.knex.table('menu_items');
+    const items = await this.knex.table('menu_items');
+
+    console.log(items);
+
+    return items;
   }
 }

@@ -35,7 +35,8 @@ export class AuthController {
       loginCustomerDto.password,
     );
 
-    session.phone = customer.phone;
+    session.phone = loginCustomerDto.phone;
+
     return customer;
   }
 
