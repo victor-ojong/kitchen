@@ -11,6 +11,10 @@ export class VendorsService {
   }
 
   async findAll() {
-    return await this.knex.table('vendors');
+    const vendors = await this.knex.table('vendors');
+
+    return vendors.map((el) => {
+      return { name: el.name, phone: el.phone };
+    });
   }
 }
