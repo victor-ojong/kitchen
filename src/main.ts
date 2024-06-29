@@ -5,6 +5,7 @@ import { ValidationPipe } from '@nestjs/common';
 const cookieSession = require('cookie-session');
 
 async function bootstrap() {
+  const PORT = process.env.PORT || 6000;
   const app = await NestFactory.create(AppModule);
   app.use(cookieSession({ keys: ['hidden'] }));
   app.useGlobalPipes(
@@ -15,6 +16,6 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
   });
-  await app.listen(6000);
+  await app.listen(PORT);
 }
 bootstrap();
