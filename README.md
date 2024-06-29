@@ -14,9 +14,9 @@
   <h3 align="center">KITCHEN SERVICE </h3>
 
   <p align="center">
-    A comprehensive documentation for Kitchen Service 
+    A comprehensive documentation for Kitchen API Service 
     <br />
-    <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8"><strong>Explore the postman docs »</strong></a>
+    <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8"><strong>Explore the postman documentation »</strong></a>
     <br />
     <br />
     <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8">View Demo</a>
