@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8">
-    <img src="/static/banne.jpg" alt="Logo" width="100">
+    <img src="/static/banne.jpg" alt="Logo" width="60%">
   </a>
 
   <h3 align="center">KITCHEN SERVICE </h3>
@@ -54,11 +54,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<div align="center">
-<a href="https://victor-ojong-lendsqr-be-test.onrender.com/">
-    <img src="/assets/DATA FLOW DIAGRAM.png" alt="Logo" width="80%">
-  </a>
-</div>
+
 This is a RESTful API for a restaurant management product called
 Kitchen, the API will have two (2) main consumers:
 a. Customer,
