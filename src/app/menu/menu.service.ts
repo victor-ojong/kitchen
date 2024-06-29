@@ -68,12 +68,4 @@ export class MenuService {
   async findByVendor(vendorId: string) {
     return await this.knex.table('menu_items').where('vendorId', vendorId);
   }
-
-  async fetchAll() {
-    const items = await this.knex.table('menu_items');
-
-    console.log(items);
-
-    return items;
-  }
 }
