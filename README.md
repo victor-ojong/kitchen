@@ -8,20 +8,20 @@
 <br />
 <div align="center">
   <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8">
-    <img src="/assets/logo.png" alt="Logo" width="80" height="80">
+    <img src="/static/banne.jpg" alt="Logo" width="100">
   </a>
 
-  <h3 align="center">DEMO CREDIT APP</h3>
+  <h3 align="center">KITCHEN SERVICE </h3>
 
   <p align="center">
-    A comprehensive documentation for demo credit application 
+    A comprehensive documentation for Kitchen Service 
     <br />
-    <a href="https://documenter.getpostman.com/view/33326436/2sA3BhduLw"><strong>Explore the postman docs »</strong></a>
+    <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8"><strong>Explore the postman docs »</strong></a>
     <br />
     <br />
-    <a href="https://victor-ojong-lendsqr-be-test.onrender.com/">View Demo</a>
+    <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8">View Demo</a>
     ·
-    <a href="https://github.com/victor-ojong/Lendsqr-Backend-Engineer-Assessment/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/victor-ojong/kitchen/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
   </p>
 </div>
@@ -45,7 +45,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">Workflow</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -59,23 +59,24 @@
     <img src="/assets/DATA FLOW DIAGRAM.png" alt="Logo" width="80%">
   </a>
 </div>
-Demo Credit is a mobile lending app that requires wallet functionality. This is needed as borrowers need a wallet to receive the loans they have been granted and also send the money for repayments. This MVP (Minimum Viable Product)provides endpoints for the following API features;
+This is a RESTful API for a restaurant management product called
+Kitchen, the API will have two (2) main consumers:
+a. Customer,
+b. Vendor
+This product will only ever be accessed by these 2 consumers.
 
-Features:
-* A user can create an account
-* A user can transfer funds to another user’s account
-* A user can withdraw funds from their account
-* An Admin user can aprove loans and credit other users
-* A user with records in the Lendsqr Adjutor Karma blacklist is never onboarded.
+Features for Vendor:
+* A vendor can create an account
+* A vendor can list their menu items
+* A vendor can create/update/delete their menu items
 
 
-<div align="center">
-<a href="https://victor-ojong-lendsqr-be-test.onrender.com/">
-    <img src="/assets/e-r diagram.png" alt="Logo" width="80%">
-  </a>
-</div>
-The Entity Relationship (E-R Diagram) above shows that the different entities of this software includes our Users, Transaction records, Adjutor bvn service and the Admin. The bvn validator and adjutor service makes it possible to detect blacklisted bvn owners and prevent them from accessing our services thereby reducing the risk of non-complaint debtors.<br> <br> The User id is an essential token that is created upon onboarding into the application and is included with every single transaction record on the application incuding the sender and reciever account details, transaction amount and current timestamp. This Services put together implements common wallet / banking processes in the real-world. 
-<br>
+Features for Customers:
+* A consumer can create an account
+* A consumer can list vendors
+* A consumer can view a vendor’s information
+* A consumer can list menu items for a vendor
+* A consumer can view the details of a menu item
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -131,7 +132,7 @@ Below is a guide to for installing and running this project locally and in produ
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/victor-ojong/Lendsqr-Backend-Engineer-Assessment.git
+   git clone https://github.com/victor-ojong/kitchen.git
    ```
 2. Install NPM packages
    ```sh
@@ -152,32 +153,10 @@ Below is a guide to for installing and running this project locally and in produ
 
 
 <div align="center">
-<a href="https://victor-ojong-lendsqr-be-test.onrender.com/">
+<a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8/">
     <img src="/assets/codebase.png" alt="Logo" width="80%">
   </a>
 </div>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Initialize bvn and recieve OTP token
-- [x] Send the OTP token with new demo credit account password 
-- [x] If user not blacklisted in karma service
-    - [x] Account is created
-    - [x] User is onboared
-- [ ] If User blacklisted in karma service
-    - [ ] Access denied!
-- [x] User Logs in
-    - [x] Can transfer funds 
-    - [x] Can recieve funds
-    - [x] can request loan
-
-- [x] If User is Admin
-    - [x] can approve loan
-    - [x] can get all Users on the platform 
-
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -190,9 +169,9 @@ Below is a guide to for installing and running this project locally and in produ
 <!-- CONTACT -->
 ## Contact
 
-Online - [@linkedIn](https://www.linkedin.com/in/victorojong) - victorojong500@gmail.com
+Online - [@linkedIn](https://www.linkedin.com/in/victorojong) - LinkedIn
 
-Project Link: [https://victor-ojong-lendsqr-be-test.onrender.com](https://victor-ojong-lendsqr-be-test.onrender.com/)
+Project Link: [https://documenter.getpostman.com/view/33326436/2sA3duFYT8](https://documenter.getpostman.com/view/33326436/2sA3duFYT8/)
 
 
 
