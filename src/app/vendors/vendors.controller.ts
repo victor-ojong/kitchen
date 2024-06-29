@@ -15,13 +15,13 @@ import { CurrentUser } from '../interceptors/auth.interceptors';
 export class VendorsController {
   constructor(private readonly vendorService: VendorsService) {}
 
-  @Get('/:phone')
+  @Get('detail/:phone')
   async viewOneVendor(@Param('phone') phone: string) {
     return await this.vendorService.findOne(phone);
   }
 
-  @Get('all')
-  async viewAllVendors() {
+  @Get('list')
+  async listVendors() {
     return await this.vendorService.findAll();
   }
 }

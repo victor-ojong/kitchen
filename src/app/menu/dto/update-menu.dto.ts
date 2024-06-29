@@ -18,5 +18,5 @@ export class UpdateMenuDto {
   category?: string;
 
   @IsString()
-  item_number: string;
+  id: string;
 }
