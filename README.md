@@ -150,7 +150,7 @@ Below is a guide to for installing and running this project locally and in produ
 
 <div align="center">
 <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8/">
-    <img src="/assets/codebase.png" alt="Logo" width="80%">
+    <img src="/static/postman.png" alt="Logo" width="80%">
   </a>
 </div>
 
