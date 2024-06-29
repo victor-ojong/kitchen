@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://documenter.getpostman.com/view/33326436/2sA3duFYT8">
-    <img src="/static/banne.jpg" alt="Logo" width="60%">
+    <img style="border-radius: 15px;" src="/static/banne.jpg" alt="Logo" width="60%">
   </a>
 
   <h3 align="center">KITCHEN SERVICE </h3>
